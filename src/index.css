@@ -1,0 +1,85 @@
+@font-face {
+  font-family: "Raleway";
+  src: local("Raleway"),
+    url(/fonts/Raleway-VariableFont_wght.ttf) format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --main--light: #ffffff;
+  --main--grey-light: #cccccc;
+  --main--grey-dark: #464646;
+  --main--dark: #242424;
+  --highlight: #646cff;
+  --highlight--hover: #535bf2;
+
+  font-family: "Raleway", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: light dark;
+}
+
+a {
+  font-weight: 500;
+  color: var(--highlight);
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--highlight--hover);
+}
+
+body {
+  margin: 0;
+  color: var(--main--light);
+  background-color: var(--main--dark);
+}
+
+#root {
+  display: flex;
+  place-content: center;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: var(--highlight);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  body {
+    color: var(--main--dark);
+    background-color: var(--main--light);
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
