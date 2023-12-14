@@ -1,7 +1,6 @@
 .container {
-  width: clamp(40rem, 50%, 60rem);
+  width: clamp(60rem, 50%, 80rem);
   max-height: 80vh;
-  margin: auto;
   padding: 2rem;
   background: var(--main--dark);
   box-shadow: 0 0 #0000, 0 0 #0000, 0 10px 15px -3px rgb(0 0 0 / 0.1),

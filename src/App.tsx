@@ -1,14 +1,8 @@
-import { Outlet } from "react-router-dom";
-import Nav from "./components/Nav";
-import "./App.css";
+import { RouterProvider } from "react-router-dom";
+import router from "./router.tsx";
 
 function App() {
-  return (
-    <main className="container">
-      <Nav />
-      <Outlet />
-    </main>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

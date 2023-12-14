@@ -1,0 +1,19 @@
+.userstable {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #ddd;
+}
+
+.userstable__row {
+  border-bottom: 1px solid #ddd;
+}
+.userstable__row:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+.userstable__display_picture {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: block;
+}

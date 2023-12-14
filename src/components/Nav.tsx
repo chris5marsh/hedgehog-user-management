@@ -1,21 +1,68 @@
-import { Link } from "react-router-dom";
+import { Form, NavLink, useRouteLoaderData } from "react-router-dom";
+import classes from "./Nav.module.css";
 
 function Nav() {
+  const token = useRouteLoaderData("root") as string | undefined;
+
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to={`/`}>Home</Link>
+    <nav className={classes.nav}>
+      <ul className={classes.nav__list}>
+        <li className={classes.nav__item}>
+          <NavLink
+            to={`/`}
+            className={({ isActive }) =>
+              [
+                isActive ? classes["nav__link--active"] : "",
+                classes.nav__link,
+              ].join(" ")
+            }
+          >
+            Home
+          </NavLink>
         </li>
-        <li>
-          <Link to={`/users/1`}>User 1</Link>
-        </li>
-        <li>
-          <Link to={`/users/2`}>User 2</Link>
-        </li>
-        <li>
-          <Link to={`/users/add`}>Add a new user</Link>
-        </li>
+        {token && (
+          <>
+            <li className={classes.nav__item}>
+              <NavLink
+                end
+                to={`/users`}
+                className={({ isActive }) =>
+                  [
+                    isActive ? classes["nav__link--active"] : "",
+                    classes.nav__link,
+                  ].join(" ")
+                }
+              >
+                View all users
+              </NavLink>
+            </li>
+            <li className={classes.nav__item}>
+              <NavLink
+                to={`/users/add`}
+                className={({ isActive }) =>
+                  [
+                    isActive ? classes["nav__link--active"] : "",
+                    classes.nav__link,
+                  ].join(" ")
+                }
+              >
+                Add a new user
+              </NavLink>
+            </li>
+            <li className={classes.nav__item}>
+              <Form action="/logout" method="post">
+                <button
+                  className={[
+                    classes.nav__link,
+                    classes["nav__logout-button"],
+                  ].join(" ")}
+                >
+                  Logout
+                </button>
+              </Form>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );
