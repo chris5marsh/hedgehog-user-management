@@ -1,13 +1,23 @@
 import { LoaderFunction, createBrowserRouter } from "react-router-dom";
+
+/* Pages */
 import RootPage from "./pages/RootPage";
 import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
-import AuthenticationPage from "./pages/AuthPage";
-import authAction from "./actions/AuthAction";
-import logoutAction from "./actions/logoutAction";
-import { checkAuthLoader, tokenLoader } from "./utils/auth";
-import { getUserLoader, getUsersLoader } from "./utils/user";
+import LoginPage from "./pages/LoginPage";
 import UsersPage from "./pages/UsersPage";
+import RegisterPage from "./pages/RegisterPage";
+import AddUserPage from "./pages/AddUserPage";
+
+/* Actions */
+import loginAction from "./actions/loginAction";
+import registerAction from "./actions/registerAction";
+import addUserAction from "./actions/addUserAction";
+import logoutAction from "./actions/logoutAction";
+
+/* Loaders */
+import { checkAuthLoader, tokenLoader } from "./utils/auth";
+import { getUsersLoader } from "./utils/user";
 
 const router = createBrowserRouter([
   {
@@ -22,9 +32,14 @@ const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "auth",
-        element: <AuthenticationPage />,
-        action: authAction,
+        path: "login",
+        element: <LoginPage />,
+        action: loginAction,
+      },
+      {
+        path: "register",
+        element: <RegisterPage />,
+        action: registerAction,
       },
       {
         path: "logout",
@@ -41,13 +56,14 @@ const router = createBrowserRouter([
           },
           {
             path: "add",
-            element: <h1>Add new user</h1>,
+            element: <AddUserPage />,
             loader: checkAuthLoader as LoaderFunction<Response>,
+            action: addUserAction,
           },
           {
             path: ":userId",
             element: <h1>Individual user page</h1>,
-            loader: getUserLoader as LoaderFunction<Response>,
+            loader: checkAuthLoader as LoaderFunction<Response>,
           },
         ],
       },

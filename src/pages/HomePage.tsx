@@ -1,13 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useRouteLoaderData } from "react-router-dom";
 
-export default function HomePage() {
+function HomePage() {
+  const token = useRouteLoaderData("root") as string | undefined;
+  console.log(token);
   return (
     <div id="home-page">
       <h1>Home page</h1>
-      <p>
-        <Link to="/auth?mode=login">Log in</Link> or{" "}
-        <Link to="/auth?mode=register">register</Link>
-      </p>
+      <p>Welcome to Hedgehog User Management!</p>
+      {!token && (
+        <p>
+          <Link to="/login">Log in</Link> or{" "}
+          <Link to="/register">register</Link>
+        </p>
+      )}
     </div>
   );
 }
+
+export default HomePage;

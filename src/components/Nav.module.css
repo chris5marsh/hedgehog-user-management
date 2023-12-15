@@ -1,19 +1,35 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: center;
+}
+.nav__icon {
+  --icon-size: 6rem;
+  height: var(--icon-size);
+  width: var(--icon-size);
+  flex: 0 0 var(--icon-size);
+  display: block;
+  border-radius: 1rem;
+}
 .nav__list {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  gap: 0.25rem;
+  gap: 2%;
   padding: 0;
   margin: 0;
   list-style: none;
-}
-.nav__item {
   flex: 1 0 auto;
 }
+.nav__item {
+  flex: 0 0 23.5%; /* 100% / 3 - 2% */
+}
 .nav__link {
-  padding: 0.5rem 1rem;
+  padding: 0 1rem;
   font-weight: 500;
-  color: #747bff;
+  color: var(--highlight);
   background-color: transparent;
   text-decoration: none;
   transition: all 0.25s;
@@ -23,20 +39,39 @@
   border: none;
 }
 .nav__link:hover {
-  color: #ffffff;
-  background-color: #6268dc;
+  color: var(--white);
+  background-color: var(--highlight--hover);
 }
 
 .nav__link--active {
-  color: #f9f9f9;
-  background-color: #747bff;
+  color: var(--grey-01);
+  background-color: var(--highlight);
 }
 
 .nav__link--active:hover {
-  color: #ffffff;
-  background-color: #6268dc;
+  color: var(--white);
+  background-color: var(--highlight--hover);
 }
 
 .nav__logout-button {
   appearance: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 40rem) {
+  .nav__list {
+    flex-direction: row;
+  }
+  .nav__link {
+    padding: 0.5rem 1rem;
+  }
+  .nav__icon {
+    --icon-size: 4rem;
+  }
+}
+@media screen and (min-width: 60rem) {
+  .nav__icon {
+    --icon-size: 5rem;
+  }
 }

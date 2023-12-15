@@ -6,6 +6,13 @@ function Nav() {
 
   return (
     <nav className={classes.nav}>
+      <img
+        src="/img/header.webp"
+        alt="Hedgehog User Manager"
+        width="120"
+        height="120"
+        className={classes.nav__icon}
+      />
       <ul className={classes.nav__list}>
         <li className={classes.nav__item}>
           <NavLink

@@ -1,19 +1,125 @@
 .userstable {
+  --display_picture-size: 2.5rem;
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  border: 1px solid #ddd;
+  border: 1px solid var(--grey-07);
 }
-
+.userstable th {
+  text-align: left;
+  padding: 0.2rem 0.5rem;
+}
 .userstable__row {
-  border-bottom: 1px solid #ddd;
+  background-color: var(--grey-07);
+  border-bottom: 1px solid var(--grey-08);
+}
+.userstable__row td {
+  padding: 0.2rem 0.5rem;
 }
 .userstable__row:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color: var(--grey-06);
 }
 .userstable__display_picture {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: var(--display_picture-size);
+  height: var(--display_picture-size);
   border-radius: 50%;
   display: block;
+}
+.userstable__link {
+  border: 0;
+  cursor: pointer;
+  background: none;
+  text-decoration: none;
+  color: var(--highlight);
+  transition: color 0.25s;
+  padding: 0;
+}
+.userstable__link:hover {
+  color: var(--highlight--hover);
+  text-decoration: underline;
+}
+
+/*
+ * Usually we are mobile first, but for mangling table styles we are desktop first.
+ */
+@media screen and (max-width: 60rem) {
+  .userstable {
+    --display_picture-size: 4rem;
+  }
+  .userstable thead {
+    display: none;
+  }
+  .userstable tbody {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .userstable__row {
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: var(--display_picture-size) 1fr;
+    grid-template-areas:
+      "display_picture first_name"
+      "display_picture last_name"
+      "display_picture email"
+      "display_picture view"
+      "display_picture delete";
+    column-gap: 0.5rem;
+  }
+  .userstable__row [data-key="display_picture"] {
+    grid-area: display_picture;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .userstable__row [data-key="first_name"] {
+    grid-area: first_name;
+  }
+  .userstable__row [data-key="last_name"] {
+    grid-area: last_name;
+  }
+  .userstable__row [data-key="email"] {
+    grid-area: email;
+  }
+  .userstable__row [data-key="view"] {
+    grid-area: view;
+  }
+  .userstable__row [data-key="delete"] {
+    grid-area: delete;
+  }
+  .userstable__row [data-title]:before {
+    content: attr(data-title) ": ";
+    grid-area: first_name;
+  }
+  .userstable__row td {
+    padding: 0 0.5rem;
+  }
+}
+
+@media screen and (max-width: 40rem) {
+  .userstable {
+    --display_picture-size: 2.5rem;
+  }
+  .userstable__row {
+    column-gap: 0.25rem;
+  }
+  .userstable__row td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .userstable__row {
+    background-color: var(--white);
+  }
+  .userstable__row:nth-of-type(even) {
+    background-color: var(--grey-02);
+  }
+  .userstable {
+    border: 1px solid var(--grey-04);
+  }
+  .userstable__row {
+    border-bottom: 1px solid var(--grey-04);
+  }
 }

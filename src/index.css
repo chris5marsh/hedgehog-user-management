@@ -9,12 +9,21 @@
 }
 
 :root {
-  --main--light: #ffffff;
-  --main--grey-light: #cccccc;
-  --main--grey-dark: #464646;
-  --main--dark: #242424;
-  --highlight: #646cff;
-  --highlight--hover: #535bf2;
+  --white: #fff;
+  --white--trans: rgba(255, 255, 255, 0.1);
+  --grey-01: #f9f9f9;
+  --grey-02: #f3f3f3;
+  --grey-03: #ccc; /* not in use? */
+  --grey-04: #ddd;
+  --grey-06: #353535;
+  --grey-07: #242424;
+  --grey-08: #1a1a1a;
+  --black: #000;
+  --black--trans: rgba(0, 0, 0, 0.1);
+
+  --highlight: #1e64bf;
+  --highlight--hover: #18599b;
+  --error: #d8000c;
 
   font-family: "Raleway", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -34,6 +43,12 @@ textarea {
   line-height: inherit;
 }
 
+input,
+textarea {
+  border: 0.0625rem solid var(--grey-08);
+  border-radius: 0.125rem;
+}
+
 a {
   font-weight: 500;
   color: var(--highlight);
@@ -45,8 +60,8 @@ a:hover {
 
 body {
   margin: 0;
-  color: var(--main--light);
-  background-color: var(--main--dark);
+  color: var(--white);
+  background-color: var(--grey-07);
 }
 
 #root {
@@ -54,11 +69,11 @@ body {
   align-items: flex-start;
   justify-content: center;
   min-height: 100vh;
-  padding: 4rem;
+  padding: 1rem;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 1.6em;
   line-height: 1.1;
 }
 
@@ -69,27 +84,43 @@ h1 {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--highlight);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.25s;
 }
 .button:hover {
-  border-color: var(--highlight);
+  background-color: var(--highlight--hover);
 }
 .button:focus,
 .button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+@media screen and (min-width: 40rem) {
+  #root {
+    padding: 2rem;
+  }
+  h1 {
+    font-size: 2.4em;
+  }
+}
+
+@media screen and (min-width: 60rem) {
+  #root {
+    padding: 4rem;
+  }
+  h1 {
+    font-size: 3.2em;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   body {
-    color: var(--main--dark);
-    background-color: var(--main--light);
+    color: var(--grey-07);
+    background-color: var(--white);
   }
-  a:hover {
-    color: #747bff;
-  }
-  .button {
-    background-color: #f9f9f9;
+  input,
+  textarea {
+    border-color: var(--grey-04);
   }
 }

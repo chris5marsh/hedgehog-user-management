@@ -1,31 +1,15 @@
 import { json, redirect } from "react-router-dom";
-import { AuthMode } from "../types/authmode";
 import { AuthRequest } from "../types/AuthRequest";
 import { apiUrl } from "../types/ApiUrl.const";
 
-async function authAction({ request }: { request: Request }) {
-  const searchParams = new URL(request.url).searchParams;
-  const mode = searchParams.get("mode") || AuthMode.LOGIN;
-
-  if (mode !== AuthMode.LOGIN && mode !== AuthMode.REGISTER) {
-    throw json({ message: "Unsupported mode." }, { status: 422 });
-  }
-
+async function loginAction({ request }: { request: Request }) {
   const data = await request.formData();
   const authData: AuthRequest = {
     email: data.get("email") as string,
     password: data.get("password") as string,
   };
 
-  if (mode === AuthMode.REGISTER) {
-    authData.first_name = data.get("first_name") as string;
-    authData.last_name = data.get("last_name") as string;
-    authData.password_confirmation = data.get(
-      "password_confirmation"
-    ) as string;
-  }
-
-  const response = await fetch(`${apiUrl}/${mode}`, {
+  const response = await fetch(`${apiUrl}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -38,7 +22,7 @@ async function authAction({ request }: { request: Request }) {
   }
 
   if (!response.ok) {
-    throw json({ message: "Could not authenticate user." }, { status: 500 });
+    return json({ message: "Could not authenticate user." }, { status: 500 });
   }
 
   const resData = await response.json();
@@ -49,11 +33,7 @@ async function authAction({ request }: { request: Request }) {
   expiration.setHours(expiration.getHours() + 1);
   localStorage.setItem("expiration", expiration.toISOString());
 
-  if (mode === AuthMode.REGISTER) {
-    return redirect("/auth?mode=login");
-  }
-
   return redirect("/users");
 }
 
-export default authAction;
+export default loginAction;

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Pagination({
+function Pagination({
   page,
   perPage,
   total,
@@ -45,3 +45,5 @@ export default function Pagination({
     </>
   );
 }
+
+export default Pagination;
