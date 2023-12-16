@@ -1,10 +1,10 @@
 import { json, redirect } from "react-router-dom";
-import { AuthRequest } from "../types/AuthRequest";
+import { RegisterRequest } from "../types/Requests";
 import { apiUrl } from "../types/ApiUrl.const";
 
 async function registerAction({ request }: { request: Request }) {
   const data = await request.formData();
-  const authData: AuthRequest = {
+  const authData: RegisterRequest = {
     email: data.get("email") as string,
     first_name: data.get("first_name") as string,
     last_name: data.get("last_name") as string,
@@ -19,6 +19,8 @@ async function registerAction({ request }: { request: Request }) {
     },
     body: JSON.stringify(authData),
   });
+
+  console.log(response);
 
   // Errors specified in API docs
   if (response.status === 422 || response.status === 409) {

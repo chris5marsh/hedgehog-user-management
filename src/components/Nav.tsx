@@ -6,27 +6,47 @@ function Nav() {
 
   return (
     <nav className={classes.nav}>
-      <img
-        src="/img/header.webp"
-        alt="Hedgehog User Manager"
-        width="120"
-        height="120"
-        className={classes.nav__icon}
-      />
+      <NavLink to={`/`}>
+        <img
+          src="/img/header.webp"
+          alt="Hedgehog User Manager"
+          width="120"
+          height="120"
+          className={classes.nav__icon}
+        />
+      </NavLink>
       <ul className={classes.nav__list}>
-        <li className={classes.nav__item}>
-          <NavLink
-            to={`/`}
-            className={({ isActive }) =>
-              [
-                isActive ? classes["nav__link--active"] : "",
-                classes.nav__link,
-              ].join(" ")
-            }
-          >
-            Home
-          </NavLink>
-        </li>
+        {!token && (
+          <>
+            <li className={classes.nav__item}>
+              <NavLink
+                end
+                to={`/login`}
+                className={({ isActive }) =>
+                  [
+                    isActive ? classes["nav__link--active"] : "",
+                    classes.nav__link,
+                  ].join(" ")
+                }
+              >
+                Log in
+              </NavLink>
+            </li>
+            <li className={classes.nav__item}>
+              <NavLink
+                to={`/register`}
+                className={({ isActive }) =>
+                  [
+                    isActive ? classes["nav__link--active"] : "",
+                    classes.nav__link,
+                  ].join(" ")
+                }
+              >
+                Register
+              </NavLink>
+            </li>
+          </>
+        )}
         {token && (
           <>
             <li className={classes.nav__item}>

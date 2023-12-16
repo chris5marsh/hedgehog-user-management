@@ -15,3 +15,22 @@ Run `npm test` to launch the test runner in interactive watch mode. -->
 ## Deployment
 
 Pushing to the Git repository will automatically deploy the app to Netlify. The deploy script runs `npm run build` and `npx @hedgehoglab/frontend-tech-test-server@latest` concurrently
+
+## Notes
+
+### TODO
+
+- add new user
+- delete user
+- testing
+- deployment
+
+### Features
+
+- Uses Typescript throughout
+- Authentication flow borrows heavily from previous auth flow done as part of a React course
+- Users "store" is simply an object stored in memory. If the app grew I would use something like `redux`
+- Responsive design, with breakpoints at 40rem (640px) and 60rem (960px)
+- Light and dark mode, depending on user device preference
+- Header icon, default user image and favicon created using MidJourney
+- Raleway font downloaded from [Google fonts](https://fonts.google.com/specimen/Raleway)

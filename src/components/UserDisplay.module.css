@@ -1,0 +1,11 @@
+.userdisplay {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.userdisplay__display_picture {
+  width: 9.375rem;
+  height: 9.375rem;
+  border-radius: 50%;
+  margin: 0 auto;
+}

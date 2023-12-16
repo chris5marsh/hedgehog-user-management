@@ -1,4 +1,4 @@
-import { Form, Link, useActionData, useNavigation } from "react-router-dom";
+import { Form, useActionData, useNavigation } from "react-router-dom";
 import "../assets/form.css";
 
 function AddUserForm() {
@@ -25,7 +25,6 @@ function AddUserForm() {
           <input id="last_name" type="text" name="last_name" required />
         </p>
         <div className="actions">
-          <Link to="?mode=login">Log in</Link>
           <button disabled={isSubmitting} className="button">
             {isSubmitting ? "Submitting..." : "Add new user"}
           </button>

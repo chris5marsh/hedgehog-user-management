@@ -18,6 +18,8 @@
 
 .error {
   color: var(--error);
+  padding: 0;
+  list-style: none;
 }
 
 .actions {
@@ -25,4 +27,9 @@
   gap: 1rem;
   justify-content: space-between;
   align-items: center;
+}
+
+/* This ensures a single button is aligned to the right */
+.action > :only-child {
+  margin-left: auto;
 }

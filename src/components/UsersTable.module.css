@@ -52,7 +52,6 @@
   .userstable tbody {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
   }
   .userstable__row {
     padding: 0.5rem;

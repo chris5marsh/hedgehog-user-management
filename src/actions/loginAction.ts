@@ -1,10 +1,10 @@
 import { json, redirect } from "react-router-dom";
-import { AuthRequest } from "../types/AuthRequest";
+import { LoginRequest } from "../types/Requests";
 import { apiUrl } from "../types/ApiUrl.const";
 
 async function loginAction({ request }: { request: Request }) {
   const data = await request.formData();
-  const authData: AuthRequest = {
+  const authData: LoginRequest = {
     email: data.get("email") as string,
     password: data.get("password") as string,
   };

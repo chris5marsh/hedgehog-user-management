@@ -2,7 +2,6 @@ import { Link, useRouteLoaderData } from "react-router-dom";
 
 function HomePage() {
   const token = useRouteLoaderData("root") as string | undefined;
-  console.log(token);
   return (
     <div id="home-page">
       <h1>Home page</h1>

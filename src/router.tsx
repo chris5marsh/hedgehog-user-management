@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import UsersPage from "./pages/UsersPage";
 import RegisterPage from "./pages/RegisterPage";
 import AddUserPage from "./pages/AddUserPage";
+import UserPage from "./pages/UserPage";
 
 /* Actions */
 import loginAction from "./actions/loginAction";
@@ -53,6 +54,7 @@ const router = createBrowserRouter([
             path: "",
             element: <UsersPage />,
             loader: getUsersLoader as LoaderFunction<Response>,
+            id: "users",
           },
           {
             path: "add",
@@ -62,8 +64,8 @@ const router = createBrowserRouter([
           },
           {
             path: ":userId",
-            element: <h1>Individual user page</h1>,
-            loader: checkAuthLoader as LoaderFunction<Response>,
+            element: <UserPage />,
+            loader: getUsersLoader as LoaderFunction<Response>,
           },
         ],
       },

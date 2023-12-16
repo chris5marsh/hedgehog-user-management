@@ -1,10 +1,10 @@
 import { json, redirect } from "react-router-dom";
-import { AuthRequest } from "../types/AuthRequest";
+import { AddUserRequest } from "../types/Requests";
 import { apiUrl } from "../types/ApiUrl.const";
 
 async function addUserAction({ request }: { request: Request }) {
   const data = await request.formData();
-  const authData: AuthRequest = {
+  const authData: AddUserRequest = {
     email: data.get("email") as string,
     first_name: data.get("first_name") as string,
     last_name: data.get("last_name") as string,

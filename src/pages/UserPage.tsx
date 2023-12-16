@@ -1,13 +1,22 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import UserDisplay from "../components/UserDisplay";
-import { User } from "../types/User";
+import { UsersResponse } from "../types/User";
 
 function UserPage() {
-  const userResponse = useLoaderData() as User;
+  const usersResponse = useLoaderData() as UsersResponse;
+  const params = useParams();
+  const userId = params.userId;
+  let user;
+
+  if (userId) {
+    user = usersResponse.data.find((u) => {
+      return u.id === parseInt(userId);
+    });
+  }
 
   return (
     <div id="user-page">
-      <UserDisplay user={userResponse} />
+      <UserDisplay user={user} />
     </div>
   );
 }

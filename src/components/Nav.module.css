@@ -1,7 +1,7 @@
 .nav {
   display: flex;
   flex-direction: row;
-  gap: 0.5rem;
+  gap: 2rem;
   align-items: center;
 }
 .nav__icon {
@@ -24,7 +24,7 @@
   flex: 1 0 auto;
 }
 .nav__item {
-  flex: 0 0 23.5%; /* 100% / 3 - 2% */
+  flex: 0 0 calc(((100% - (2 * 2%)) / 3));
 }
 .nav__link {
   padding: 0 1rem;
