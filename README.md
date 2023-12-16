@@ -14,7 +14,7 @@ Run `npm test` to launch the test runner in interactive watch mode. -->
 
 ## Deployment
 
-Pushing to the Git repository will automatically deploy the app to Netlify. The deploy script runs `npm run build` and `npx @hedgehoglab/frontend-tech-test-server@latest` concurrently
+Pushing to the Git repository will automatically deploy the app to [Netlify](). The deploy script runs `npm run build` and `npx @hedgehoglab/frontend-tech-test-server@latest` concurrently
 
 ## Notes
 
@@ -22,6 +22,7 @@ Pushing to the Git repository will automatically deploy the app to Netlify. The 
 
 - add new user
 - delete user
+- pagination
 - testing
 - deployment
 

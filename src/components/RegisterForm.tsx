@@ -1,22 +1,10 @@
 import { Form, Link, useActionData, useNavigation } from "react-router-dom";
 import ErrorList from "./ErrorList";
 import "../assets/form.css";
-
-type registerActionData = {
-  data: {
-    message?: string;
-    errors?: {
-      first_name: string[];
-      last_name: string[];
-      email: string[];
-      password: string[];
-      password_confirmation: string[];
-    };
-  };
-};
+import { ActionData } from "../types/ActionData";
 
 function RegisterForm() {
-  const actionData = useActionData() as registerActionData | null;
+  const actionData = useActionData() as ActionData | null;
   const message = actionData && actionData.data?.message;
   const errors = actionData && actionData.data?.errors;
   const navigation = useNavigation();

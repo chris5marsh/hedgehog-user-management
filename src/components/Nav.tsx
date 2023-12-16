@@ -60,7 +60,7 @@ function Nav() {
                   ].join(" ")
                 }
               >
-                View all users
+                View list of users
               </NavLink>
             </li>
             <li className={classes.nav__item}>

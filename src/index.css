@@ -50,7 +50,6 @@ textarea {
 }
 
 a {
-  font-weight: 500;
   color: var(--highlight);
   text-decoration: inherit;
 }

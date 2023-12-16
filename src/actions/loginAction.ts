@@ -22,7 +22,10 @@ async function loginAction({ request }: { request: Request }) {
   }
 
   if (!response.ok) {
-    return json({ message: "Could not authenticate user." }, { status: 500 });
+    return json(
+      { data: { message: "Could not log user in." } },
+      { status: 500 }
+    );
   }
 
   const resData = await response.json();

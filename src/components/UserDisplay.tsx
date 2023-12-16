@@ -26,7 +26,7 @@ function UserDisplay({ user }: { user: User | undefined }) {
           </Form>
           <hr />
           <p>
-            <Link to="/users">Back to users</Link>
+            <Link to="/users">Back to list of users</Link>
           </p>
         </div>
       )}

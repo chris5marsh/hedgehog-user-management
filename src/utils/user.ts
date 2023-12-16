@@ -1,6 +1,6 @@
 import { checkAuthLoader } from "./auth";
 import { apiUrl } from "../types/ApiUrl.const";
-import { UsersResponse } from "../types/User";
+import { User, UsersResponse } from "../types/User";
 
 let usersStore: UsersResponse;
 
@@ -26,4 +26,9 @@ export async function getUsers(perPage = 100, page = 1) {
   const usersJson = await usersResponse.json();
   usersStore = usersJson;
   return usersJson;
+}
+
+export async function addUserToStore(user: User) {
+  await getUsers();
+  usersStore.data.push(user);
 }
