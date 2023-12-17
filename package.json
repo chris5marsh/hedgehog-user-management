@@ -1,7 +1,7 @@
 {
   "name": "hedgehog-user-management",
   "description": "A user management app for hedgehoglab",
-  "private": true,
+  "private": false,
   "version": "1.0.0",
   "type": "module",
   "author": {
