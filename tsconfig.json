@@ -20,6 +20,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "__tests__/App.test.tsx"],
+  "esModuleInterop": true,
   "references": [{ "path": "./tsconfig.node.json" }]
 }
