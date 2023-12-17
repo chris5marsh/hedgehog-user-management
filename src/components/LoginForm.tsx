@@ -17,12 +17,24 @@ function LoginForm() {
         {message && <p className="error">{message}</p>}
         <div className="form__field">
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" name="email" required />
+          <input
+            id="email"
+            type="email"
+            name="email"
+            autoComplete="username"
+            required
+          />
           {errors?.email && <ErrorList errors={errors.email} />}
         </div>
         <div className="form__field">
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" name="password" required />
+          <input
+            id="password"
+            type="password"
+            name="password"
+            autoComplete="current-password"
+            required
+          />
           {errors?.password && <ErrorList errors={errors.password} />}
         </div>
         <div className="actions">

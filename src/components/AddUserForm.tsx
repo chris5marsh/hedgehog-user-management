@@ -17,17 +17,35 @@ function AddUserForm() {
         {message && <p className="error">{message}</p>}
         <div className="form__field">
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" name="email" required />
+          <input
+            id="email"
+            type="email"
+            name="email"
+            autoComplete="off"
+            required
+          />
           {errors?.email && <ErrorList errors={errors.email} />}
         </div>
         <div className="form__field">
           <label htmlFor="first_name">First name</label>
-          <input id="first_name" type="text" name="first_name" required />
+          <input
+            id="first_name"
+            type="text"
+            name="first_name"
+            autoComplete="off"
+            required
+          />
           {errors?.first_name && <ErrorList errors={errors.first_name} />}
         </div>
         <div className="form__field">
           <label htmlFor="last_name">Last name</label>
-          <input id="last_name" type="text" name="last_name" required />
+          <input
+            id="last_name"
+            type="text"
+            name="last_name"
+            autoComplete="off"
+            required
+          />
           {errors?.last_name && <ErrorList errors={errors.last_name} />}
         </div>
         <div className="actions">

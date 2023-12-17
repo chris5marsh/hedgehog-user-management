@@ -26,6 +26,12 @@
   list-style: none;
 }
 
+.success {
+  color: var(--success);
+  padding: 0;
+  list-style: none;
+}
+
 .actions {
   display: flex;
   gap: 1rem;

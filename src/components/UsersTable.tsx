@@ -1,8 +1,17 @@
 import { Form, Link } from "react-router-dom";
+import { useContext } from "react";
+import { MessageProviderContext } from "../providers/MessageProvider";
+import { MessageStatus } from "../types/MessageStatus";
 import { User } from "../types/User";
 import classes from "./UsersTable.module.css";
 
 function UsersTable({ users }: { users: User[] }) {
+  const { addMessage, removeMessage } = useContext(MessageProviderContext);
+  const handleDelete = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(e);
+    addMessage("User deleted", MessageStatus.SUCCESS);
+    setTimeout(() => removeMessage(), 5000);
+  };
   const userRows = users.map((user) => (
     <tr key={user.id} className={classes.userstable__row} data-id={user.id}>
       <td data-key="display_picture">
@@ -29,7 +38,11 @@ function UsersTable({ users }: { users: User[] }) {
         </Link>
       </td>
       <td data-key="delete">
-        <Form method="post" action={`/users/${user.id}/delete`}>
+        <Form
+          method="post"
+          action={`/users/${user.id}/delete`}
+          onSubmit={handleDelete}
+        >
           <button className={classes.userstable__link}>Delete</button>
         </Form>
       </td>

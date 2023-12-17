@@ -22,6 +22,8 @@ Pushing to the Git repository will automatically deploy the app to [Netlify](). 
 
 - delete user - show message when delete completes
 - testing
+- "Show password" icon on password fields
+- Deal with error/success messages globally
 - deployment
 
 ### Features

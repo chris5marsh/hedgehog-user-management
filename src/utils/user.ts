@@ -8,7 +8,7 @@ export async function getUsersLoader() {
   return getUsers();
 }
 
-export async function getUsers(perPage = 100, page = 1) {
+export async function getUsers(perPage = 1000, page = 1) {
   const token = checkAuthLoader();
   if (usersStore) {
     return usersStore;

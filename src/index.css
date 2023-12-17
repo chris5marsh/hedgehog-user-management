@@ -23,6 +23,7 @@
   --highlight: #1e64bf;
   --highlight--hover: #18599b;
   --error: #d8000c;
+  --success: #4f8a10;
 
   font-family: "Raleway", system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

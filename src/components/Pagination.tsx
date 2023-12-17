@@ -1,20 +1,22 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { PaginationLinks } from "../types/Pagination";
+import { PaginationLinks } from "../types/PaginationLinks";
 import classes from "./Pagination.module.css";
 
 function Pagination({
+  startPage,
   perPage,
   total,
   onPageChange,
 }: {
+  startPage: number;
   perPage: number;
   total: number;
-  onPageChange: (page: number) => void;
+  onPageChange?: (page: number) => void;
 }) {
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(startPage);
   const startNumber = page * perPage - perPage + 1;
-  const endNumber = page * perPage;
+  const endNumber = Math.min(page * perPage, total);
   const totalNumber = total;
   const totalPages = Math.ceil(total / perPage);
 
@@ -30,7 +32,7 @@ function Pagination({
       newPage = totalPages;
     }
     setPage(newPage);
-    onPageChange(newPage);
+    onPageChange && onPageChange(newPage);
   }
 
   return (
