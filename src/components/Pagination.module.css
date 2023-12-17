@@ -1,0 +1,23 @@
+.pagination {
+  margin-block: 1rem;
+}
+
+.pagination__text {
+  text-align: center;
+}
+
+.pagination__list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  gap: 1rem;
+  padding: 0;
+}
+
+.pagination__item {
+  color: var(--highlight);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.25s;
+}

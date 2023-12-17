@@ -13,11 +13,10 @@
   --white--trans: rgba(255, 255, 255, 0.1);
   --grey-01: #f9f9f9;
   --grey-02: #f3f3f3;
-  --grey-03: #ccc; /* not in use? */
-  --grey-04: #ddd;
-  --grey-06: #353535;
-  --grey-07: #242424;
-  --grey-08: #1a1a1a;
+  --grey-03: #ddd;
+  --grey-04: #353535;
+  --grey-05: #242424;
+  --grey-06: #1a1a1a;
   --black: #000;
   --black--trans: rgba(0, 0, 0, 0.1);
 
@@ -45,7 +44,7 @@ textarea {
 
 input,
 textarea {
-  border: 0.0625rem solid var(--grey-08);
+  border: 0.0625rem solid var(--grey-06);
   border-radius: 0.125rem;
 }
 
@@ -60,7 +59,7 @@ a:hover {
 body {
   margin: 0;
   color: var(--white);
-  background-color: var(--grey-07);
+  background-color: var(--grey-05);
 }
 
 #root {
@@ -116,11 +115,11 @@ h1 {
 
 @media (prefers-color-scheme: light) {
   body {
-    color: var(--grey-07);
+    color: var(--grey-05);
     background-color: var(--white);
   }
   input,
   textarea {
-    border-color: var(--grey-04);
+    border-color: var(--grey-03);
   }
 }

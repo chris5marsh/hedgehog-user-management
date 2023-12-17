@@ -1,7 +1,7 @@
-import { json, redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { AddUserRequest } from "../types/Requests";
 import { apiUrl } from "../types/ApiUrl.const";
-import { getAuthToken } from "../utils/auth";
+import { createErrorResponse, getAuthToken } from "../utils/auth";
 import { addUserToStore } from "../utils/user";
 
 async function addUserAction({ request }: { request: Request }) {
@@ -14,10 +14,7 @@ async function addUserAction({ request }: { request: Request }) {
   const token = getAuthToken();
 
   if (!token) {
-    return json(
-      { data: { message: "You must be authenticated to add a user." } },
-      { status: 500 }
-    );
+    return createErrorResponse("You must be authenticated to add a user.");
   }
 
   const response = await fetch(`${apiUrl}/users`, {
@@ -34,7 +31,7 @@ async function addUserAction({ request }: { request: Request }) {
   }
 
   if (!response.ok) {
-    return json({ data: { message: "Could not add user." } }, { status: 500 });
+    return createErrorResponse("Could not add user.");
   }
 
   const resData = await response.json();

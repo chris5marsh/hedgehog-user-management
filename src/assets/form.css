@@ -3,6 +3,10 @@
   margin: 2rem auto;
 }
 
+.form__field {
+  margin-block: 1rem;
+}
+
 .form label,
 .form input,
 .form textarea {

@@ -20,9 +20,7 @@ Pushing to the Git repository will automatically deploy the app to [Netlify](). 
 
 ### TODO
 
-- add new user
-- delete user
-- pagination
+- delete user - show message when delete completes
 - testing
 - deployment
 
@@ -31,6 +29,7 @@ Pushing to the Git repository will automatically deploy the app to [Netlify](). 
 - Uses Typescript throughout
 - Authentication flow borrows heavily from previous auth flow done as part of a React course
 - Users "store" is simply an object stored in memory. If the app grew I would use something like `redux`
+- Getting all users currently capped at 1000, pagination done client side. If the user object grew much bigger or the number of users grew to 1000s, would reconsider using server-side pagination
 - Responsive design, with breakpoints at 40rem (640px) and 60rem (960px)
 - Light and dark mode, depending on user device preference
 - Header icon, default user image and favicon created using MidJourney

@@ -2,10 +2,10 @@
   width: clamp(60rem, 50%, 80rem);
   padding: 1rem;
   border-radius: 0.375rem;
-  background: var(--grey-07);
+  background: var(--grey-05);
   box-shadow: 0 10px 15px -3px var(--white--trans),
     0 4px 6px -4px var(--white--trans);
-  border: 0.0625rem solid var(--grey-08);
+  border: 0.0625rem solid var(--grey-06);
 }
 
 @media screen and (min-width: 60rem) {
@@ -19,6 +19,6 @@
     background-color: var(--white);
     box-shadow: 0 10px 15px -3px var(--black--trans),
       0 4px 6px -4px var(--black--trans);
-    border: 0.0625rem solid var(--grey-04);
+    border: 0.0625rem solid var(--grey-03);
   }
 }

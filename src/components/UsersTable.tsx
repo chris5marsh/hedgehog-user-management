@@ -4,7 +4,7 @@ import classes from "./UsersTable.module.css";
 
 function UsersTable({ users }: { users: User[] }) {
   const userRows = users.map((user) => (
-    <tr key={user.id} className={classes.userstable__row}>
+    <tr key={user.id} className={classes.userstable__row} data-id={user.id}>
       <td data-key="display_picture">
         <img
           className={classes.userstable__display_picture}

@@ -1,48 +1,90 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { PaginationLinks } from "../types/Pagination";
+import classes from "./Pagination.module.css";
 
 function Pagination({
-  page,
   perPage,
   total,
-  totalPages,
+  onPageChange,
 }: {
-  page: number;
   perPage: number;
   total: number;
-  totalPages: number;
+  onPageChange: (page: number) => void;
 }) {
+  const [page, setPage] = useState(1);
   const startNumber = page * perPage - perPage + 1;
   const endNumber = page * perPage;
   const totalNumber = total;
+  const totalPages = Math.ceil(total / perPage);
+
+  function handleClick(link: PaginationLinks) {
+    let newPage = page;
+    if (link === PaginationLinks.FIRST) {
+      newPage = 1;
+    } else if (link === PaginationLinks.PREVIOUS) {
+      newPage -= 1;
+    } else if (link === PaginationLinks.NEXT) {
+      newPage += 1;
+    } else if (link === PaginationLinks.LAST) {
+      newPage = totalPages;
+    }
+    setPage(newPage);
+    onPageChange(newPage);
+  }
+
   return (
-    <>
-      <p>
-        Showing {startNumber} to {endNumber} of {totalNumber} entries. Page{" "}
-        {page} of {totalPages}.
+    <div className={classes.pagination}>
+      <p className={classes.pagination__text}>
+        Showing {startNumber} to {endNumber} of {totalNumber} entries.
       </p>
-      <ul>
+      <ul className={classes.pagination__list}>
         {page > 2 && (
           <li>
-            <Link to={`?page=1`}>&lt;&lt; First</Link>
+            <Link
+              className={classes.pagination__item}
+              to={`?page=1`}
+              onClick={() => handleClick(PaginationLinks.FIRST)}
+            >
+              &lt;&lt; {PaginationLinks.FIRST}
+            </Link>
           </li>
         )}
         {page > 1 && (
           <li>
-            <Link to={`?page=${+page - 1}`}>&lt; Previous</Link>
+            <Link
+              className={classes.pagination__item}
+              to={`?page=${+page - 1}`}
+              onClick={() => handleClick(PaginationLinks.PREVIOUS)}
+            >
+              &lt; {PaginationLinks.PREVIOUS}
+            </Link>
           </li>
         )}
         {page < totalPages && (
           <li>
-            <Link to={`?page=${+page + 1}`}>Next &gt;</Link>
+            <Link
+              className={classes.pagination__item}
+              to={`?page=${+page + 1}`}
+              onClick={() => handleClick(PaginationLinks.NEXT)}
+            >
+              {PaginationLinks.NEXT} &gt;
+            </Link>
           </li>
         )}
         {page < totalPages - 1 && (
           <li>
-            <Link to={`?page=${totalPages}`}>Last &gt;&gt;</Link>
+            <Link
+              className={classes.pagination__item}
+              to={`?page=${totalPages}`}
+              onClick={() => handleClick(PaginationLinks.LAST)}
+            >
+              {PaginationLinks.LAST} &gt;&gt;
+            </Link>
           </li>
         )}
       </ul>
-    </>
+    </div>
   );
 }
 

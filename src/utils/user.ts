@@ -32,3 +32,11 @@ export async function addUserToStore(user: User) {
   await getUsers();
   usersStore.data.push(user);
 }
+
+export async function removeUserFromStore(userId: number) {
+  await getUsers();
+  const newUsersStoreData = usersStore.data.filter((u) => {
+    return u.id !== userId;
+  });
+  usersStore.data = newUsersStoreData;
+}

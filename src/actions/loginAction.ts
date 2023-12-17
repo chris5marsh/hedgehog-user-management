@@ -1,6 +1,7 @@
-import { json, redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { LoginRequest } from "../types/Requests";
 import { apiUrl } from "../types/ApiUrl.const";
+import { createErrorResponse } from "../utils/auth";
 
 async function loginAction({ request }: { request: Request }) {
   const data = await request.formData();
@@ -22,10 +23,7 @@ async function loginAction({ request }: { request: Request }) {
   }
 
   if (!response.ok) {
-    return json(
-      { data: { message: "Could not log user in." } },
-      { status: 500 }
-    );
+    return createErrorResponse("Could not log user in.");
   }
 
   const resData = await response.json();

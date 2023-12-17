@@ -15,6 +15,7 @@ import loginAction from "./actions/loginAction";
 import registerAction from "./actions/registerAction";
 import addUserAction from "./actions/addUserAction";
 import logoutAction from "./actions/logoutAction";
+import deleteUserAction from "./actions/deleteUserAction";
 
 /* Loaders */
 import { checkAuthLoader, tokenLoader } from "./utils/auth";
@@ -66,6 +67,13 @@ const router = createBrowserRouter([
             path: ":userId",
             element: <UserPage />,
             loader: getUsersLoader as LoaderFunction<Response>,
+            children: [
+              {
+                path: "delete",
+                element: <p>User has been deleted</p>,
+                action: deleteUserAction,
+              },
+            ],
           },
         ],
       },

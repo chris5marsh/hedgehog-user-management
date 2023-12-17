@@ -15,21 +15,21 @@ function AddUserForm() {
       <Form method="post" className="form">
         <h1>Add new user</h1>
         {message && <p className="error">{message}</p>}
-        <p>
+        <div className="form__field">
           <label htmlFor="email">Email</label>
           <input id="email" type="email" name="email" required />
           {errors?.email && <ErrorList errors={errors.email} />}
-        </p>
-        <p>
+        </div>
+        <div className="form__field">
           <label htmlFor="first_name">First name</label>
           <input id="first_name" type="text" name="first_name" required />
           {errors?.first_name && <ErrorList errors={errors.first_name} />}
-        </p>
-        <p>
+        </div>
+        <div className="form__field">
           <label htmlFor="last_name">Last name</label>
           <input id="last_name" type="text" name="last_name" required />
           {errors?.last_name && <ErrorList errors={errors.last_name} />}
-        </p>
+        </div>
         <div className="actions">
           <button disabled={isSubmitting} className="button">
             {isSubmitting ? "Submitting..." : "Add new user"}

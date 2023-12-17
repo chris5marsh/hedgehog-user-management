@@ -1,6 +1,7 @@
-import { json, redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { RegisterRequest } from "../types/Requests";
 import { apiUrl } from "../types/ApiUrl.const";
+import { createErrorResponse } from "../utils/auth";
 
 async function registerAction({ request }: { request: Request }) {
   const data = await request.formData();
@@ -20,8 +21,6 @@ async function registerAction({ request }: { request: Request }) {
     body: JSON.stringify(authData),
   });
 
-  console.log(response);
-
   // Errors specified in API docs
   if (response.status === 422 || response.status === 409) {
     return response;
@@ -29,10 +28,7 @@ async function registerAction({ request }: { request: Request }) {
 
   // Unspecified error
   if (!response.ok) {
-    return json(
-      { data: { message: "Could not authenticate user." } },
-      { status: 500 }
-    );
+    return createErrorResponse("Could not authenticate user.");
   }
 
   return redirect("/login");

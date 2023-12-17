@@ -15,16 +15,16 @@ function LoginForm() {
       <Form method="post" className="form">
         <h1>Log in</h1>
         {message && <p className="error">{message}</p>}
-        <p>
+        <div className="form__field">
           <label htmlFor="email">Email</label>
           <input id="email" type="email" name="email" required />
           {errors?.email && <ErrorList errors={errors.email} />}
-        </p>
-        <p>
+        </div>
+        <div className="form__field">
           <label htmlFor="password">Password</label>
           <input id="password" type="password" name="password" required />
           {errors?.password && <ErrorList errors={errors.password} />}
-        </p>
+        </div>
         <div className="actions">
           <Link to="/register">Register</Link>
           <button disabled={isSubmitting} className="button">
