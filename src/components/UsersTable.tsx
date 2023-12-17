@@ -7,8 +7,7 @@ import classes from "./UsersTable.module.css";
 
 function UsersTable({ users }: { users: User[] }) {
   const { addMessage, removeMessage } = useContext(MessageProviderContext);
-  const handleDelete = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(e);
+  const handleDelete = () => {
     addMessage("User deleted", MessageStatus.SUCCESS);
     setTimeout(() => removeMessage(), 5000);
   };

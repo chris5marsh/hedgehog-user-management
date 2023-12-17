@@ -1,8 +1,18 @@
 {
   "name": "hedgehog-user-management",
+  "description": "A user management app for hedgehoglab",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "author": {
+    "name": "Chris Marsh",
+    "email": "chris5marsh@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chris5marsh/hedgehog-user-management.git"
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

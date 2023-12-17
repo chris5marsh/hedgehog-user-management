@@ -1,6 +1,7 @@
-import { checkAuthLoader } from "./auth";
+import { getAuthToken } from "./auth";
 import { apiUrl } from "../types/ApiUrl.const";
 import { User, UsersResponse } from "../types/User";
+import { redirect } from "react-router";
 
 let usersStore: UsersResponse;
 
@@ -9,7 +10,10 @@ export async function getUsersLoader() {
 }
 
 export async function getUsers(perPage = 1000, page = 1) {
-  const token = checkAuthLoader();
+  const token = getAuthToken();
+  if (!token) {
+    return redirect("/login");
+  }
   if (usersStore) {
     return usersStore;
   }

@@ -25,8 +25,6 @@ function MessageProvider({ children }: { children: React.ReactNode }) {
     removeMessage: useCallback(() => removeMessage(), []),
   };
 
-  console.log(contextValue);
-
   return (
     <MessageProviderContext.Provider value={contextValue}>
       {children}
